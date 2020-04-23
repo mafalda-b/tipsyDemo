@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--Views on the left side -->
+
+    <TextView
+        android:id="@+id/initial_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:text="Base"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tip_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="20%"
+        app:layout_constraintEnd_toEndOf="@+id/initial_amount"
+        app:layout_constraintTop_toBottomOf="@+id/initial_amount" />
+
+    <TextView
+        android:id="@+id/total_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Tip"
+        app:layout_constraintEnd_toEndOf="@+id/initial_amount"
+        app:layout_constraintTop_toBottomOf="@+id/tip_percentage" />
+
+    <TextView
+        android:id="@+id/final_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Total"
+        app:layout_constraintEnd_toEndOf="@+id/initial_amount"
+        app:layout_constraintTop_toBottomOf="@+id/total_tip" />
+
+    <!--Views on the right side -->
+
+    <EditText
+        android:id="@+id/actual_amount"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/initial_amount"
+        app:layout_constraintStart_toEndOf="@+id/initial_amount" />
+
+    <SeekBar
+        android:id="@+id/seekBarTip"
+        android:layout_width="220dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:max="30"
+        app:layout_constraintBottom_toBottomOf="@+id/tip_percentage"
+        app:layout_constraintStart_toEndOf="@+id/tip_percentage"
+        app:layout_constraintTop_toTopOf="@+id/tip_percentage" />
+
+    <TextView
+        android:id="@+id/tvTipDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Scumbag!"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarTip"
+        app:layout_constraintStart_toStartOf="@+id/seekBarTip"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarTip" />
+
+    <TextView
+        android:id="@+id/result_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/total_tip"
+        app:layout_constraintBaseline_toBaselineOf="@+id/total_tip"
+        tools:text="3.55" />
+
+    <TextView
+        android:id="@+id/result_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/final_amount"
+        app:layout_constraintBaseline_toBaselineOf="@+id/final_amount"
+        tools:text="103.55" />
+
+    <!-- Footer view -->
+
+    <TextView
+        android:id="@+id/tvBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Made with ❤️ by Mafalda"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
