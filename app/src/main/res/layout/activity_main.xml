@@ -12,9 +12,12 @@
         android:id="@+id/initial_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif"
         android:text="Base"
+        android:textAllCaps="true"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,8 +27,35 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="20%"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/initial_amount"
         app:layout_constraintTop_toBottomOf="@+id/initial_amount" />
+
+    <TextView
+        android:id="@+id/tvSplit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="1 Person"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/initial_amount"
+        app:layout_constraintTop_toBottomOf="@+id/final_amount" />
+
+    <TextView
+        android:id="@+id/tvTotalPerson"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="per person"
+        android:textAlignment="textEnd"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/initial_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSplit" />
 
     <TextView
         android:id="@+id/total_tip"
@@ -33,6 +63,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="Tip"
+        android:textAllCaps="true"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/initial_amount"
         app:layout_constraintTop_toBottomOf="@+id/tip_percentage" />
 
@@ -40,9 +72,10 @@
         android:id="@+id/final_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:text="Total"
+        android:textAllCaps="true"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/initial_amount"
         app:layout_constraintTop_toBottomOf="@+id/total_tip" />
 
@@ -53,9 +86,12 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:autoText="false"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:textSize="24sp"
+        android:textColor="#4A615B"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/initial_amount"
         app:layout_constraintStart_toEndOf="@+id/initial_amount" />
 
@@ -75,29 +111,60 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Scumbag!"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/seekBarTip"
         app:layout_constraintStart_toStartOf="@+id/seekBarTip"
         app:layout_constraintTop_toBottomOf="@+id/seekBarTip" />
 
     <TextView
         android:id="@+id/result_tip"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/total_tip"
+        android:textColor="#4A615B"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/total_tip"
+        app:layout_constraintStart_toEndOf="@+id/total_tip"
         tools:text="3.55" />
 
     <TextView
         android:id="@+id/result_total"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/final_amount"
+        android:textColor="#4A615B"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/final_amount"
+        app:layout_constraintStart_toEndOf="@+id/final_amount"
         tools:text="103.55" />
+
+    <TextView
+        android:id="@+id/tvTotalPerPerson"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:background="#60A191"
+        android:elegantTextHeight="false"
+        android:textAlignment="viewStart"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTotalPerson"
+        app:layout_constraintStart_toEndOf="@+id/tvTotalPerson" />
+
+    <SeekBar
+        android:id="@+id/seekBarSplit"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="220dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:max="14"
+        android:progress="3"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSplit"
+        app:layout_constraintStart_toEndOf="@+id/tvSplit"
+        app:layout_constraintTop_toTopOf="@+id/tvSplit" />
 
     <!-- Footer view -->
 

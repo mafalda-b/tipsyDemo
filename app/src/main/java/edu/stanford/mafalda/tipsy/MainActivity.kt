@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                 tip_percentage.text = "$progress%"
                 updateTipDescription(progress)
                 computeTipAndTotal()
+                computeTipPerson()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
@@ -39,11 +40,26 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 Log.i(TAG, "afterTextChanged $s")
                 computeTipAndTotal()
+                computeTipPerson()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        // Listening to the changes in the SeekBarSplit
+        seekBarSplit.progress = 0
+        seekBarSplit.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+            Log.i(TAG, "onProgressChanged $progress")
+                computeTipPerson()
+                updateTipSplit(progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
     }
@@ -66,16 +82,41 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun computeTipPerson() {
+        if (actual_amount.text.isEmpty()){
+            tvTotalPerPerson.text = ""
+            return
+        }
+        val baseAmount = actual_amount.text.toString().toDouble()
+        val tipPercent = seekBarTip.progress
+        val tipAmount = baseAmount * tipPercent / 100
+        val totalAmount = baseAmount + tipAmount
+        val numberPersons = seekBarSplit.progress + 1
+        val amountPerson = totalAmount / numberPersons
+        tvTotalPerPerson.text = "%.2f".format(amountPerson)
+    }
+
     private fun updateTipDescription(tipPercent:Int){
         val tipDescription: String
         when(tipPercent){
-            in 0..9 -> tipDescription = "Scumbag!"
-            in 10..14 -> tipDescription = "Cheap!"
-            in 15..19 -> tipDescription = "Decent"
-            in 20..25 -> tipDescription = "You're on a date, aren't you?"
-            else -> tipDescription = "Now you're just bragging"
+            in 0..9 -> tipDescription = "Scumbag!\uD83D\uDCA9"
+            in 10..14 -> tipDescription = "Cheap!\uD83E\uDD7A"
+            in 15..19 -> tipDescription = "Decent \uD83C\uDD97"
+            else -> tipDescription = "Millionaire! \uD83E\uDD11"
         }
         tvTipDescription.text = tipDescription
 
     }
-}
+
+    private fun updateTipSplit (numberPersons:Int) {
+        val numberPersons = seekBarSplit.progress + 1
+        val peoplePerson: String
+        when (seekBarSplit.progress) {
+            in 0..0 -> peoplePerson = "Person"
+            else -> peoplePerson = "People"
+        }
+        tvSplit.text = "$numberPersons $peoplePerson"
+    }
+
+
+    }
